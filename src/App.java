@@ -15,7 +15,7 @@ public class App {
                     run = false;
                 }
             else {
-                reader.readInput(str);
+                reader.convertInput(str);
             }
         }
         myScan.close();
