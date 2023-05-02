@@ -16,6 +16,11 @@ public class App {
                 }
             else {
                 reader.convertInput(str);
+                double[] numbers = reader.getNumbers();
+                char[] operators = reader.getOperators();
+                Calculator calc = new Calculator(numbers, operators);
+                double answer = calc.getAnswer();
+                System.out.println(answer);
             }
         }
         myScan.close();

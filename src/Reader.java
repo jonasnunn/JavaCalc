@@ -3,6 +3,8 @@ public class Reader {
     
     private List<Character> operators;
     private List<Character> numbers;
+    private double[] numberArray;
+    private char[] opsArray;
 
     Reader() {
         operators = new ArrayList<Character>();
@@ -37,7 +39,7 @@ public class Reader {
         return true;
     }    
 
-    public double[] findNums(String input) {
+    private double[] findNums(String input) {
         String[] numberStrings = input.split("[*/+-]");
         double[] doubles = new double[numberStrings.length];
         
@@ -49,7 +51,7 @@ public class Reader {
         return doubles;
     }
 
-    public char[] findOps(String input) {
+    private char[] findOps(String input) {
         String opString = input.replaceAll("[0123456789.]", "");
         char[] opCharArray = opString.toCharArray();
         // System.out.println(opCharArray);
@@ -64,9 +66,30 @@ public class Reader {
         if (!checkValidChars(cleanInput)) //If chars are not valid return.
             return;
         
-        double[] nums = findNums(cleanInput); // Find the numbers.
-        char[] ops = findOps(cleanInput); // Find the operators.
-        System.out.println(Arrays.toString(nums));
-        System.out.println(ops);
+        numberArray = findNums(cleanInput); // Find the numbers.
+        opsArray = findOps(cleanInput); // Find the operators.
+        
+        // Check if any numbers exists
+        if (numberArray.length == 0) {
+            System.out.println("Invalid Input. Please enter a valid expression.");
+            return; 
+        }
+
+        // Check if any operators exists
+        if (opsArray.length == 0) {
+            System.out.println("Invalid Input. Please enter a valid expression.");
+            return; 
+        }
+        
+        System.out.println(Arrays.toString(numberArray));
+        System.out.println(opsArray);
+    }
+
+    public double[] getNumbers() {
+        return numberArray;
+    }
+
+    public char[] getOperators() {
+        return opsArray;
     }
 }
