@@ -80,9 +80,8 @@ public class Reader {
             System.out.println("Invalid Input. Please enter a valid expression.");
             return; 
         }
-        
-        System.out.println(Arrays.toString(numberArray));
-        System.out.println(opsArray);
+        // System.out.println(Arrays.toString(numberArray));
+        // System.out.println(opsArray);
     }
 
     public double[] getNumbers() {

@@ -28,38 +28,42 @@ public class Calculator {
     private void preformMath() {
         // Multiplication and division loop
         int runTimes = opsList.size();
+        int index = 0;
         for (int i = 0; i < runTimes; i++) {
-            if (ops[i] == '*') {
-                answer = multiply(nums[i], nums[i+1]);
-                numsList.remove(i);
-                numsList.remove(i);
-                numsList.add(i, answer);
-                opsList.remove(i);
-            } 
-            else if (ops[i] == '/') {
-                answer = divide(nums[i], nums[i+1]);
-                numsList.remove(i);
-                numsList.remove(i);
-                numsList.add(i, answer);
-                opsList.remove(i);
+            if (opsList.get(index) == '+' || opsList.get(index) == '-') {
+                index++;
+            }
+            else if (opsList.get(index) == '*') {
+                answer = multiply(numsList.get(index), numsList.get(index + 1));
+                numsList.remove(index);
+                numsList.remove(index);
+                numsList.add(index, answer);
+                opsList.remove(index);
+            }
+            else if (opsList.get(index) == '/') {
+                answer = divide(numsList.get(index), numsList.get(index + 1));
+                numsList.remove(index);
+                numsList.remove(index);
+                numsList.add(index, answer);
+                opsList.remove(index);
             } 
         }
         // Addition and subtraction loop
         runTimes = opsList.size();
         for (int i = 0; i < runTimes; i++) {
-            if (ops[i] == '+') {
-                answer = add(nums[i], nums[i+1]);
-                numsList.remove(i);
-                numsList.remove(i);
-                numsList.add(i, answer);
-                opsList.remove(i);
+            if (opsList.get(0) == '+') {
+                answer = add(numsList.get(0), numsList.get(1));
+                numsList.remove(0);
+                numsList.remove(0);
+                numsList.add(0, answer);
+                opsList.remove(0);
             } 
-            else if (ops[i] == '-') {
-                answer = subtract(nums[i], nums[i+1]);
-                numsList.remove(i);
-                numsList.remove(i);
-                numsList.add(i, answer);
-                opsList.remove(i);
+            else if (opsList.get(0) == '-') {
+                answer = subtract(numsList.get(0), numsList.get(1));
+                numsList.remove(0);
+                numsList.remove(0);
+                numsList.add(0, answer);
+                opsList.remove(0);
             } 
         }
     }
